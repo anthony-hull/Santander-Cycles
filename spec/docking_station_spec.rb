@@ -16,7 +16,7 @@ describe DockingStation do
   end
   context '::bikes == empty' do
     it '.release_bike' do
-      expect(@docking_station.release_bike).to eq('No dice mate')
+      expect{@docking_station.release_bike}.to raise_error('No dice mate')
     end
   end
 end

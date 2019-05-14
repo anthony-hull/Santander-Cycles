@@ -7,7 +7,7 @@ class DockingStation
     @bikes.push(bike)
   end
   def release_bike
-    return 'No dice mate' if @bikes.empty?
+    raise 'No dice mate' if @bikes.empty?
     @bikes.sample
   end
 end
