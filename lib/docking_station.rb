@@ -2,7 +2,7 @@ class DockingStation
   attr_reader :bikes
   def initialize
     @bikes = []
-    @capacity = 1
+    @capacity = 20
   end
   def add_bike(bike)
     raise 'no space for that boi' if @bikes.length >= @capacity

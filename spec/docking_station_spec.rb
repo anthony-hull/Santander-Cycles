@@ -1,4 +1,5 @@
 require 'docking_station'
+require 'pry-byebug'
 
 describe DockingStation do
   it 'docking station created' do
@@ -19,10 +20,18 @@ describe DockingStation do
       expect{@docking_station.release_bike}.to raise_error('No dice mate')
     end
   end
-  context '::bikes.count == 1' do
+  context '::bikes.count == 20' do
+    @docking_station = DockingStation.new
+    
     it '.add_bike(bike)' do
-      @docking_station.add_bike('a bike')
-      expect{@docking_station.add_bike('another bike')}.to raise_error('no space for that boi')
+      20.times{ @docking_station.add_bike('Bike') }
+      expect do 
+        @docking_station.add_bike('another bike')
+      end.to raise_error('no space for that boi')
     end
+  end
+
+  it 'can accept up to 20 bikes' do
+    expect{20.times{@docking_station.add_bike('Bike')}}.to_not raise_error
   end
 end
