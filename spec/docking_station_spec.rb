@@ -19,4 +19,10 @@ describe DockingStation do
       expect{@docking_station.release_bike}.to raise_error('No dice mate')
     end
   end
+  context '::bikes.count == 1' do
+    it '.add_bike(bike)' do
+      @docking_station.add_bike('a bike')
+      expect{@docking_station.add_bike('another bike')}.to raise_error('no space for that boi')
+    end
+  end
 end

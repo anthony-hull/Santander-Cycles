@@ -2,8 +2,10 @@ class DockingStation
   attr_reader :bikes
   def initialize
     @bikes = []
+    @capacity = 1
   end
   def add_bike(bike)
+    raise 'no space for that boi' if @bikes.length >= @capacity
     @bikes.push(bike)
   end
   def release_bike
