@@ -1,8 +1,8 @@
 require 'bike'
 require 'docking_station'
 
-describe 'getting a working bike' do
-  it 'works?' do
+describe 'docking_station.add_bike.release_bike' do
+  it '.working?' do
     bike = Bike.new
     docking_station = DockingStation.new
     docking_station.add_bike(bike)

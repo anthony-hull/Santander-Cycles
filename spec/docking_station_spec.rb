@@ -10,4 +10,8 @@ describe DockingStation do
   it 'can release bike' do
     expect(@docking_station).to respond_to(:release_bike)
   end
+  it '.add_bike' do
+    @docking_station.add_bike('bike')
+    expect(@docking_station.bikes).to eq('bike') 
+  end
 end
