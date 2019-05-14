@@ -12,6 +12,11 @@ describe DockingStation do
   end
   it '.add_bike' do
     @docking_station.add_bike('bike')
-    expect(@docking_station.bikes).to eq('bike') 
+    expect(@docking_station.bikes).to eq(['bike'])
+  end
+  context '::bikes == empty' do
+    it '.release_bike' do
+      expect(@docking_station.release_bike).to eq('No dice mate')
+    end
   end
 end

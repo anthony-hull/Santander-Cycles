@@ -1,9 +1,13 @@
 class DockingStation
   attr_reader :bikes
+  def initialize
+    @bikes = []
+  end
   def add_bike(bike)
-    @bikes = bike
+    @bikes.push(bike)
   end
   def release_bike
-    @bikes
+    return 'No dice mate' if @bikes.empty?
+    @bikes.sample
   end
 end
