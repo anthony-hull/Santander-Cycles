@@ -17,7 +17,7 @@ describe DockingStation do
   end
   context '::bikes == empty' do
     it '.release_bike' do
-      expect{@docking_station.release_bike}.to raise_error('No dice mate')
+      expect{@docking_station.release_bike}.to raise_error('No bikes are available')
     end
   end
   context '::bikes.count == 20' do
@@ -33,5 +33,9 @@ describe DockingStation do
 
   it 'can accept up to 20 bikes' do
     expect{20.times{@docking_station.add_bike('Bike')}}.to_not raise_error
+  end
+
+  it '.new(capacity=15)' do
+    expect(DockingStation.new(15).capacity).to eq(15)
   end
 end

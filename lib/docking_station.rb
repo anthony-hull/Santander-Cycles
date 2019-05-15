@@ -1,15 +1,16 @@
 class DockingStation
   attr_reader :bikes
-  def initialize
+  attr_reader :capacity
+  def initialize(capacity=20)
     @bikes = []
-    @capacity = 20
+    @capacity = capacity
   end
   def add_bike(bike)
     raise 'no space for that boi' if full?
     @bikes.push(bike)
   end
   def release_bike
-    raise 'No dice mate' if empty?
+    raise 'No bikes are available' if empty?
     @bikes.shift
   end
   private
