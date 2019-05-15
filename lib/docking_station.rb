@@ -10,7 +10,7 @@ class DockingStation
   end
   def release_bike
     raise 'No dice mate' if empty?
-    @bikes.sample
+    @bikes.shift
   end
   private
   def ryan
