@@ -14,7 +14,7 @@ describe 'docking_station.add_bike.release_bike' do
     it 'release_bike.working?' do
       @bike.broken
       @docking_station.add_bike(@bike)
-      expect(@docking_station.release_bike.working?).to eql(false)
+      expect{@docking_station.release_bike}.to raise_error('No bikes are available')
     end
   end
 end
