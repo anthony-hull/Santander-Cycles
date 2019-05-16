@@ -7,7 +7,12 @@ describe Bike do
     expect(@bike).to respond_to(:working?)
   end
 
-  it 'is working?' do
+  it '.working? true' do
     expect(@bike.working?).to eql(true)
+  end
+
+  it '.working? false' do
+    @bike.broken
+    expect(@bike.working?).to eql(false)
   end
 end
