@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class DockingStation
   attr_reader :bikes
   attr_reader :capacity
@@ -29,12 +28,10 @@ class DockingStation
     @bikes.length.zero?
   end
   def any_working_bikes?
-    return false if empty?
     return false if get_working_bike_index.nil?
     true
   end
   def get_working_bike_index
-    # binding.pry
     @bikes.each.with_index do |bike, bike_index|
        return bike_index if bike.working?
     end
