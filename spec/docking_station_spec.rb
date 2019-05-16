@@ -24,6 +24,7 @@ describe 'DockingStation' do
     @docking_station = DockingStation.new
     
     it '.add_bike(bike)' do
+      binding.pry
       20.times{ @docking_station.add_bike('Bike') }
       expect do 
         @docking_station.add_bike('another bike')
