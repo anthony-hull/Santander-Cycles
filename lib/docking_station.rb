@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class DockingStation
   attr_reader :bikes
   attr_reader :capacity
@@ -10,9 +11,13 @@ class DockingStation
     @bikes.push(bike)
   end
   def release_bike
-    raise 'No bikes are available' if empty?
-    @bikes.shift
+    raise 'No bikes are available' unless any_working_bikes?
+    working_bike_index = get_working_bike_index
+    a_working_bike = @bikes[working_bike_index]
+    @bikes.delete_at(working_bike_index)
+    a_working_bike
   end
+
   private
   def ryan
     'saved'
@@ -22,5 +27,17 @@ class DockingStation
   end
   def empty?
     @bikes.length.zero?
+  end
+  def any_working_bikes?
+    return false if empty?
+    return false if get_working_bike_index.nil?
+    true
+  end
+  def get_working_bike_index
+    # binding.pry
+    @bikes.each.with_index do |bike, bike_index|
+       return bike_index if bike.working?
+    end
+    nil
   end
 end
