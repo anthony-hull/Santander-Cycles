@@ -2,6 +2,7 @@ require 'docking_station'
 require 'pry-byebug'
 
 describe 'DockingStation' do
+  DEFAULT_CAPACITY = DockingStation::DEFAULT_CAPACITY
   it 'docking station created' do
     expect{DockingStation.new}.not_to raise_error
   end
@@ -20,21 +21,19 @@ describe 'DockingStation' do
       expect{@docking_station.release_bike}.to raise_error('No bikes are available')
     end
   end
-  context '::bikes.count == 20' do
+  context '::bikes.count == DEFAULT_CAPACITY' do
     @docking_station = DockingStation.new
-    
+    it 'can accept up to the maximum capacity of bikes' do
+      expect{DEFAULT_CAPACITY.times{@docking_station.add_bike('Bike')}}.to_not raise_error
+    end
     it '.add_bike(bike)' do
-      binding.pry
-      20.times{ @docking_station.add_bike('Bike') }
+      DEFAULT_CAPACITY.times{ @docking_station.add_bike('Bike') }
       expect do 
         @docking_station.add_bike('another bike')
       end.to raise_error('no space for that boi')
     end
   end
 
-  it 'can accept up to 20 bikes' do
-    expect{20.times{@docking_station.add_bike('Bike')}}.to_not raise_error
-  end
 
   it '.new(capacity=15)' do
     expect(DockingStation.new(15).capacity).to eq(15)
